@@ -1,5 +1,5 @@
 
-# 📦 Documentação do Projeto - Página Inicial de Loja Online
+# 📦 Documentação do Projeto - Autenticação e Cadastro de Clientes
 
 ## 🧾 Sumário
 - [Descrição do Projeto](#descrição-do-projeto)
@@ -16,7 +16,7 @@
 
 ## 📘 Descrição do Projeto
 
-Este projeto é uma página inicial de uma loja virtual desenvolvida com **HTML**, **CSS**, **JavaScript** e **PHP**. Ela permite ao cliente visualizar produtos, definir quantidade, adicionar ao carrinho, e simula o processo de compra por meio de comunicação com o backend.
+Este módulo faz parte de um sistema de e-commerce e lida com o **cadastro** e **login** de clientes, usando **HTML**, **CSS**, **JavaScript**, **PHP** e **MySQL**. Ele garante que usuários possam criar contas, realizar login seguro e acessar páginas de cliente autenticado.
 
 ---
 
@@ -26,24 +26,18 @@ Este projeto é uma página inicial de uma loja virtual desenvolvida com **HTML*
 /trabalho/
 │
 ├── CssGeral/
-│   └── geralCliente1.css
+│   └── loginGeral.css
 │
 ├── PagClientes/
 │   ├── cadastro.html
-│   ├── Carrinho.html
+│   ├── Clientes1.html
+│   ├── cadastropessoal.html
 │   ├── js/
-│   │   ├── carregarProdutos.js
-│   │   ├── recuoerarCliente.js
-│   │   └── carregarProdutos.php
-│   └── php/
-│       └── Carrinho/
-│           └── enviarDados1.php
-│
-├── PagGestao/
-│   └── index.html
-│
-├── uploads/
-│   └── [imagens dos produtos]
+│   │   ├── loginClientes.js
+│   ├── php/
+│   │   └── Cadastro/
+│   │       ├── cadastro.php
+│   │       └── login.php
 │
 └── index.html
 ```
@@ -55,55 +49,64 @@ Este projeto é uma página inicial de uma loja virtual desenvolvida com **HTML*
 - **Frontend**:
   - HTML5
   - CSS3
-  - JavaScript (com jQuery)
+  - JavaScript (vanilla)
 - **Backend**:
-  - PHP (Procedural)
+  - PHP (procedural)
   - MySQL (banco de dados)
 
 ---
 
 ## 🔁 Fluxo do Sistema
 
-1. O usuário acessa `index.html`.
-2. O JS carrega produtos disponíveis do backend via `carregarProdutos.php`.
-3. O cliente seleciona uma quantidade e clica em "Comprar".
-4. A quantidade é armazenada temporariamente no `localStorage`.
-5. O JS envia os dados via AJAX para `enviarDados1.php`, que registra no banco.
-6. A página é recarregada e mostra o nome do usuário, se estiver logado (`recuoerarCliente.js`).
+1. O usuário acessa `cadastro.html` ou `cadastropessoal.html`.
+2. Preenche os dados e, ao submeter, é feita uma requisição AJAX para `cadastro.php`.
+3. Se o cadastro for bem-sucedido, o usuário é redirecionado para a página de login.
+4. No login (`cadastro.html`), os dados são enviados via fetch ao `login.php`.
+5. O `login.php` verifica se o e-mail e senha estão corretos.
+6. Se autenticado, armazena os dados no `localStorage` e redireciona para `Clientes1.html`.
 
 ---
 
 ## 🧩 Detalhamento das Páginas e Scripts
 
-### 🔹 `index.html`
+### 🔹 `cadastro.html`
 
-- Página principal com vitrine de produtos.
-- Inclui links para:
-  - Cadastro/Login
-  - Carrinho
-  - Gestão
-- Contém um container para os produtos dinamicamente carregados.
+- Página com formulário de login.
+- Permite que o usuário entre com e-mail e senha.
+- Link para se cadastrar se não tiver conta.
 
-### 🔹 `carregarProdutos.js`
+### 🔹 `cadastropessoal.html`
 
-- Usa AJAX para buscar os produtos no backend.
-- Renderiza dinamicamente os produtos na tela.
-- Permite definir quantidade e comprar.
+- Formulário de cadastro com os campos:
+  - Nome, e-mail, CPF, data de nascimento e senha.
+- Verifica:
+  - Senhas iguais
+  - Campos obrigatórios preenchidos
+  - Senha com no mínimo 8 caracteres
 
-### 🔹 `recuoerarCliente.js`
+### 🔹 `Clientes1.html`
 
-- Recupera o nome do cliente do `localStorage` e exibe no botão de login.
+- Página acessível apenas após login bem-sucedido.
+- Exibe dados do cliente logado (através de `localStorage`).
 
-### 🔹 `enviarDados1.php`
+### 🔹 `loginClientes.js`
 
-- Recebe `idUsuario`, `idProduto` e `quantidade`.
-- Insere no banco de dados (tabela `carrinho`).
-- Usa transações para garantir integridade.
+- Faz fetch ao `login.php` usando método POST.
+- Se as credenciais estiverem corretas:
+  - Armazena `nomeUsuario` e `idUsuario` no `localStorage`
+  - Redireciona para `Clientes1.html`
 
-### 🔹 `carregarProdutos.php`
+### 🔹 `cadastro.php`
 
-- Realiza SELECT na tabela `produtosCadastrado`.
-- Retorna um array JSON com os dados dos produtos.
+- Recebe dados via `POST`
+- Insere no banco de dados (`ClientesCadastrados`)
+- Retorna mensagem de sucesso ou erro
+
+### 🔹 `login.php`
+
+- Recebe `usuario` e `senha`
+- Consulta no banco de dados se existe cliente com as credenciais
+- Retorna JSON com `{ autenticado: true, id: <idCliente> }` ou falso
 
 ---
 
@@ -111,30 +114,22 @@ Este projeto é uma página inicial de uma loja virtual desenvolvida com **HTML*
 
 ### 🔸 Banco: `Clientes`
 
-#### Tabela: `produtosCadastrado`
+#### Tabela: `ClientesCadastrados`
 
-| Campo             | Tipo     |
-|------------------|----------|
-| id               | INT (PK) |
-| nome             | VARCHAR  |
-| preco            | DECIMAL  |
-| img              | VARCHAR  |
-| quantidadeEstoque| INT      |
-
-#### Tabela: `carrinho`
-
-| Campo           | Tipo     |
-|----------------|----------|
-| id             | INT (PK) |
-| carrinhoCliente| INT      |
-| compras        | INT      |
-| quantidade     | DECIMAL  |
+| Campo         | Tipo     |
+|---------------|----------|
+| id            | INT (PK) |
+| nome          | VARCHAR  |
+| email         | VARCHAR  |
+| datanascimento| DATE     |
+| cpf           | VARCHAR  |
+| senha         | VARCHAR  |
 
 ---
 
 ## 📋 Requisitos
 
-- Servidor local (XAMPP, WAMP, ou Apache com PHP)
+- Servidor local (XAMPP, WAMP, Apache com PHP)
 - PHP 7.4+
 - MySQL ou MariaDB
 - Navegador moderno com suporte a JavaScript e LocalStorage
@@ -143,15 +138,14 @@ Este projeto é uma página inicial de uma loja virtual desenvolvida com **HTML*
 
 ## 🚀 Execução do Projeto
 
-1. Clone ou copie a pasta `/trabalho` para o diretório do seu servidor local (ex: `htdocs` no XAMPP).
-2. Configure o banco de dados com as tabelas `produtosCadastrado` e `carrinho`.
-3. Adicione imagens de produtos na pasta `/uploads`.
-4. Abra `http://localhost/trabalho/index.html` no navegador.
+1. Copie a pasta `/trabalho` para o diretório do seu servidor local (`htdocs` ou equivalente).
+2. Crie o banco de dados `Clientes` com a tabela `ClientesCadastrados`.
+3. Acesse `http://localhost/trabalho/PagClientes/cadastro.html` para iniciar.
 
 ---
 
 ## 📝 Observações Finais
 
-- O projeto está preparado para futuras integrações com páginas de gestão e autenticação de usuários.
-- É possível melhorar a segurança com validações no backend e sanitização de dados.
-- Este projeto é ideal para fins didáticos e pode evoluir para um e-commerce completo.
+- O projeto está modularizado para facilitar expansão.
+- Recomendado usar **hash de senha** (como `password_hash()` em PHP) em produção.
+- Ideal para fins didáticos ou MVP de autenticação básica em e-commerce.

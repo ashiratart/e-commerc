@@ -26,18 +26,30 @@ Este módulo faz parte de um sistema de e-commerce e lida com o **cadastro** e *
 /trabalho/
 │
 ├── CssGeral/
+│   └── geralCliente1.css
 │   └── loginGeral.css
 │
 ├── PagClientes/
 │   ├── cadastro.html
 │   ├── Clientes1.html
+│   ├── Carrinho.html
 │   ├── cadastropessoal.html
 │   ├── js/
-│   │   ├── loginClientes.js
+│   │   ├── carregarProdutos.js
+│   │   ├── recuoerarCliente.js
+│   │   └── loginClientes.js
 │   ├── php/
+│   │   ├── Carrinho/
+│   │   │   └── enviarDados1.php
 │   │   └── Cadastro/
 │   │       ├── cadastro.php
 │   │       └── login.php
+│
+├── PagGestao/
+│   └── index.html
+│
+├── uploads/
+│   └── [imagens dos produtos]
 │
 └── index.html
 ```
@@ -114,17 +126,24 @@ Este módulo faz parte de um sistema de e-commerce e lida com o **cadastro** e *
 
 ### 🔸 Banco: `Clientes`
 
-#### Tabela: `ClientesCadastrados`
+#### Tabela: `produtosCadastrado`
 
-| Campo         | Tipo     |
-|---------------|----------|
-| id            | INT (PK) |
-| nome          | VARCHAR  |
-| email         | VARCHAR  |
-| datanascimento| DATE     |
-| cpf           | VARCHAR  |
-| senha         | VARCHAR  |
+| Campo             | Tipo     |
+|------------------|----------|
+| id               | INT (PK) |
+| nome             | VARCHAR  |
+| preco            | DECIMAL  |
+| img              | VARCHAR  |
+| quantidadeEstoque| INT      |
 
+#### Tabela: `carrinho`
+
+| Campo           | Tipo     |
+|----------------|----------|
+| id             | INT (PK) |
+| carrinhoCliente| INT      |
+| compras        | INT      |
+| quantidade     | DECIMAL  |
 ---
 
 ## 📋 Requisitos

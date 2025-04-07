@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/trabalho/CssGeral/geralCliente1.css">
+    <title>Produtos</title>
+    
+</head>
+
+<body>
+    <main>
+        <div class="menu">
+            <div class="cadastro">
+                <a id="linkPramudar" href="/trabalho/PagClientes/cadastro.html">Entrar</a>
+            </div>
+            <div id="carrinho"><a href="/trabalho/PagClientes/Carrinho.html" onclick="enviarCarrinho()">Carrinho</a></div>
+            <div id="gestao">
+                <a href="/trabalho/PagGestao/index.html">Gestão</a>
+            </div>
+        </div>
+        <div id="logoLoja">
+            iiiii
+        </div>
+        <div class="conteiner" id="produtosContainer">
+        </div>
+    </main>
+    <!-- biblioteca pra recuperar o cliente do local storege -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- api de resgate de nome e id do cliente -->
+    <script src="/trabalho/PagClientes/js/recuoerarCliente.js"></script>
+    <!-- carrinho -->
+<!--     <script src="/trabalho/PagClientes/js/carrinho.js"></script>
+ -->    <!-- api de compras -->
+    <!-- <script src="/trabalho/PagGestao/APIs/js/compra.js"></script> -->
+    <!-- biblioteca pra carregar os arquivos dos produtos -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- api pra carregar os produtos -->
+    <script src="/trabalho/PagClientes/js/carregarProdutos.js"></script>
+</body>
+
+</html>

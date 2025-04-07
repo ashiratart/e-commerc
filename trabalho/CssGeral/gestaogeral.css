@@ -1,0 +1,68 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    max-width: 90vw;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.cabecalho {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cabecalho h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#Grafico {
+    max-width: 100%;
+    height: auto;
+}
+
+#caixaMes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+#Servico {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+#Servico div {
+    flex: 1;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#Servico div:hover{
+    background-color: rgb(80, 80, 241);
+}
+
+#Servico h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+#Servico a {
+    text-decoration: none;
+    color: white;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+    <link rel="stylesheet" href="/trabalho/CssGeral/carrinho.css"> <!-- Adicionando o arquivo de estilo CSS -->
+</head>
+
+<body>
+    <main>
+        <div class="menu">
+            <div id="carrinho"><a href="/trabalho/PagClientes/Clientes1.html">Produtos</a></div>
+        </div>
+        <div id="tabela-container">
+            <div>
+                <h2>Seu Carrinho</h2>
+            </div>
+            <div class="carrinhocarregado conteiner"></div>
+            <!-- Adicionando a classe 'conteiner' ao carrinho carregado -->
+        </div>
+        <div id="TotalCompra">
+            <input type="text" id="TotaldaCompra" readonly>
+        </div>
+        <div id="fun">
+            <button id="cancelaCompra" onclick="AlterarItens()">Alterar Itens</button>
+            <button id="btnComprar" onclick="comprar()">Comprar</button>
+        </div>
+        <div id="formadePagamento">
+            <input type="checkbox" name="Pix" id="PIX"><label for="PIX">PIX</label>
+            <input type="checkbox" name="Cart" id="cartao"><label for="cartao">Cartao</label>
+            <input type="checkbox" name="Bol" id="Boleto"><label for="Boleto">Boleto</label>
+        </div>
+        <div id="suasCompras">
+            <h3>Suas Compras realizadas</h3>
+        <div class="compraprocessada">
+        </div>
+        </div>
+    </main>
+    <!-- Biblioteca -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- Código para carregar o carrinho -->
+    <script src="/trabalho/PagClientes/js/carrinho1.js"></script>
+    <!-- carregar compras processadas -->
+    <script src="/trabalho/PagClientes/js/carregarCompraFeita.js"></script>
+
+</body>
+
+</html>

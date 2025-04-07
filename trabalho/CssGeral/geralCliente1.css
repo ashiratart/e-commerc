@@ -1,0 +1,57 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    max-width: 90vw;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+}
+
+#logoLoja {
+    text-align: center;
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+.conteiner {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+/* O seletor para as divs dos produtos foi modificado aqui */
+[id^="produtosCadastrados-"] {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Adicionando esta propriedade para centralizar o conteúdo */
+}
+
+[id^="produtosCadastrados-"] img {
+    max-width: 100%; /* Garante que a largura máxima é 100% da largura da div pai */
+    max-height: 100%; /* Limita a altura máxima a 50px */
+    display: block; /* Remove espaços adicionais abaixo da imagem */
+    margin: 0 auto;/* Centraliza a imagem na div */
+    padding: 5px;
+}

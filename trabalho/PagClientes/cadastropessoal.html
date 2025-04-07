@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Cadastro</title>
+    <link rel="stylesheet" href="/trabalho/CssGeral/loginGeral.css">
+</head>
+
+<body>
+    <main>
+        <div id="cadastrar">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome">
+            <label for="email">Email</label>
+            <input type="email" id="email">
+            <label for="Cpf">CPF:</label>
+            <input type="text" id="Cpf">
+            <label for="datanascimento">Data de Nascimento:</label>
+            <input type="date" id="datanascimento">
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha">
+            <label for="repete">Repita senha:</label>
+            <input type="password" id="repete">
+            <button onclick="cadastrar()">Cadastrar</button>
+        </div>
+    </main>
+    <script>
+        function cadastrar() {
+            // Obter valores dos campos
+            var nome = document.getElementById('nome').value;
+            var email = document.getElementById('email').value;
+            var cpf = document.getElementById('Cpf').value;
+            var dataNascimento = document.getElementById('datanascimento').value;
+            var senha = document.getElementById('senha').value;
+            var senhaRepetida = document.getElementById('repete').value;
+
+            // Validar se os campos estão preenchidos
+            if (nome === '' || email === '' || cpf === '' || dataNascimento === '' || senha === '' || senhaRepetida === '') {
+                alert('Preencha todos os campos.');
+                return;
+            }
+            if (senha !== senhaRepetida) {
+                alert('As senhas não coincidem. Por favor, digite senhas iguais nos campos "Senha" e "Repita senha".');
+                return;
+            }
+
+            // Verificar se a senha tem pelo menos oito caracteres
+            if (senha.length < 8) {
+                alert('A senha deve ter pelo menos oito caracteres.');
+                return;
+            }
+            // Enviar dados para o servidor usando AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/trabalho/PagClientes/php/Cadastro/cadastro.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                // Cadastro bem-sucedido
+                alert(xhr.responseText);
+                
+                // Redirecionar para a página de login
+                window.location.href = '/trabalho/PagClientes/cadastro.html';
+            } else {
+                // Tratar outros casos, se necessário
+                alert('Erro no cadastro: ' + xhr.status);
+            }
+        }
+    };
+
+            // Formatar dados para envio
+            var params = 'nome=' + encodeURIComponent(nome) +
+                '&email=' + encodeURIComponent(email) +
+                '&cpf=' + encodeURIComponent(cpf) +
+                '&datanascimento=' + encodeURIComponent(dataNascimento) +
+                '&senha=' + encodeURIComponent(senha);
+
+            // Enviar dados para o servidor
+            xhr.send(params);
+        }
+
+    </script>
+</body>
+
+</html>

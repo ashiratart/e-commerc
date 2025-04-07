@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos Mais Vendidos</title>
+    <link rel="stylesheet" href="/trabalho/CssGeral/estoque.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        // Função para carregar os produtos mais vendidos via AJAX
+        function carregarProdutosMaisVendidos() {
+            $.ajax({
+                url: '/trabalho/PagGestao/MaisVendidos/mais_vendidos.php',
+                type: 'GET',
+                success: function(data) {
+                    $('#Mais_vendidos').html(data);
+                },
+                error: function() {
+                    alert('Erro ao carregar produtos mais vendidos.');
+                }
+            });
+        }
+
+        // Chame a função ao carregar a página
+        $(document).ready(function() {
+            carregarProdutosMaisVendidos();
+        });
+    </script>
+</head>
+<body>
+    <main>
+    <div id="menu">
+        <a href="/trabalho/PagGestao/Gestao.html">Inicio Gestão</a>
+    </div>
+    <div id="Mais_vendidos">
+        <!-- Os produtos mais vendidos serão carregados aqui -->
+    </div>
+    </main>
+</body>
+</html>

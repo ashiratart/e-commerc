@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envio de Imagens</title>
+</head>
+<body>
+    <h1>Envio de Imagens</h1>
+
+    <form id="formulario" enctype="multipart/form-data">
+        <input type="file" id="inputImagem" name="imagem" accept="image/*">
+        <button type="button" onclick="enviarImagem()">Enviar Imagem</button>
+    </form>
+
+    <div id="mensagem"></div>
+
+    <script>
+        function enviarImagem() {
+            var formulario = document.getElementById('formulario');
+            var inputImagem = document.getElementById('inputImagem');
+
+            var formData = new FormData(formulario);
+            
+            fetch('upload.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('mensagem').innerHTML = data.mensagem;
+            })
+            .catch(error => {
+                console.error('Erro ao enviar imagem:', error);
+            });
+        }
+    </script>
+</body>
+</html>

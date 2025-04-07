@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+    <link rel="stylesheet" href="/trabalho/CssGeral/estoque.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="/trabalho/PagGestao/APIs/js/alterardados.js"></script>
+    <script src="/trabalho/PagGestao/APIs/js/cadastrartProdutos.js"></script>
+    <style>
+        #promptContainer {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div id="menu">
+            <div id="carrinho"><a href="/trabalho/PagClientes/Clientes1.html">Produtos</a></div>
+            <div id="voltar"><a href="/trabalho/PagGestao/Gestao.html">Inicio</a></div>
+        </div>
+        <div id="tabela">
+            <div>
+                <h2>Cadastre seus produtos</h2>
+            </div>
+            <table>
+                <thead>
+
+                    <th>
+                        N°
+                    </th>
+                    <th>
+                        <label for="nomeProduto">Produtos</label>
+                    </th>
+                    <th>
+                       <label for="precoProduto">Preço</label>
+                    </th>
+                    <th><label for="quantidadePrdutos">Quantidade</label></th>
+                    <th><label for="img">Imagem Produto</label></th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p>1</p>
+                        </td>
+                        <td><input type="text" id="nomeProduto"></td>
+                        <td><input type="number" min="0" id="precoProduto"></td>
+                        <td><input type="number" min="0" id="quantidadePrdutos"></td>
+                        <td><input type="file" id="img" nome="image[]" multiple accept="image/"></td>
+                        <td><button id="SalvarCadastro" onclick="guardarValor()">Adiciona</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="carregarTabela"></div>
+            <button id="finalizar" onclick="showPrompt()">Alterar</button>
+            <div id="promptContainer">
+                <label for="productNumber">Número do Produto:</label>
+                <input type="text" id="productNumber" placeholder="Digite o número do produto">
+    
+                <select id="operationSelect">
+                    <option value="delete">Deletar Produto</option>
+                    <option value="update">Alterar Produto</option>
+                </select>
+    
+                <button onclick="performOperation()">Confirmar</button>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

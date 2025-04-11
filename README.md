@@ -2,15 +2,28 @@
 # 📦 Documentação do Projeto - Autenticação e Cadastro de Clientes
 
 ## 🧾 Sumário
-- [Descrição do Projeto](#descrição-do-projeto)
-- [Estrutura de Arquivos](#estrutura-de-arquivos)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Fluxo do Sistema](#fluxo-do-sistema)
-- [Detalhamento das Páginas e Scripts](#detalhamento-das-páginas-e-scripts)
-- [Banco de Dados](#banco-de-dados)
-- [Requisitos](#requisitos)
-- [Execução do Projeto](#execução-do-projeto)
-- [Observações Finais](#observações-finais)
+
+- [📦 Documentação do Projeto - Autenticação e Cadastro de Clientes](#-documentação-do-projeto---autenticação-e-cadastro-de-clientes)
+  - [🧾 Sumário](#-sumário)
+  - [📘 Descrição do Projeto](#-descrição-do-projeto)
+  - [🗂 Estrutura de Arquivos](#-estrutura-de-arquivos)
+  - [💻 Tecnologias Utilizadas](#-tecnologias-utilizadas)
+  - [🔁 Fluxo do Sistema](#-fluxo-do-sistema)
+  - [🧩 Detalhamento das Páginas e Scripts](#-detalhamento-das-páginas-e-scripts)
+    - [🔹 `cadastro.html`](#-cadastrohtml)
+    - [🔹 `cadastropessoal.html`](#-cadastropessoalhtml)
+    - [🔹 `Clientes1.html`](#-clientes1html)
+    - [🔹 `loginClientes.js`](#-loginclientesjs)
+    - [🔹 `cadastro.php`](#-cadastrophp)
+    - [🔹 `login.php`](#-loginphp)
+  - [🛢 Banco de Dados](#-banco-de-dados)
+    - [🔸 Banco: `Clientes`](#-banco-clientes)
+      - [Tabela: `produtosCadastrado`](#tabela-produtoscadastrado)
+      - [Tabela: `carrinho`](#tabela-carrinho)
+  - [| quantidade     | DECIMAL  |](#-quantidade------decimal--)
+  - [📋 Requisitos](#-requisitos)
+  - [🚀 Execução do Projeto](#-execução-do-projeto)
+  - [📝 Observações Finais](#-observações-finais)
 
 ---
 
@@ -46,6 +59,41 @@ Este módulo faz parte de um sistema de e-commerce e lida com o **cadastro** e *
 │   │       └── login.php
 │
 ├── PagGestao/
+|   └── API/
+|   |    └──JS/
+|   |    |   ├── alterardados.js
+|   |    |   ├── cadastroProdutos.js
+|   |    |   ├── carrearPedidos.js
+|   |    |   ├── compra.js
+|   |    |   ├── controledeCliente.js
+|   |    |   └── login.js
+|   |    └── PHP/
+|   |    |   ├── alterar.php
+|   |    |   ├── caastroProdutos.php
+|   |    |   ├── buscarClientes.php
+|   |    |   ├── listarProdutos.php
+|   |    |   ├── login.php
+|   |    |   ├── padidos.php
+|   |    |   └── processarPedido.php
+|   |    └── PY/
+|   |         └── Por implementar
+|   |     
+|   ├── Clientes/
+|   |       └── Cadastro.html
+|   |
+|   ├── EntraSai/
+|   |       ├── dados_grafico.php
+|   |       ├── EntradaSaida.html
+|   |       └── fluxo.js
+|   |   
+|   ├── Estoque/
+|   |       ├── estoque.html
+|   |       └── pedido.html
+|   |
+|   ├── MaisVendidos/
+|   |       ├── Gestao.html
+|   |       └── index.html
+|   |
 │   └── index.html
 │
 ├── uploads/

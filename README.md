@@ -216,3 +216,5 @@ Este módulo faz parte de um sistema de e-commerce e lida com o **cadastro** e *
 - O projeto está modularizado para facilitar expansão.
 - Recomendado usar **hash de senha** (como `password_hash()` em PHP) em produção.
 - Ideal para fins didáticos ou MVP de autenticação básica em e-commerce.
+- Projeto Contará com a API Asaas pra processamento de compras.
+- Utiliza a API `cdn.jsdelivr.net` para gerar graficos de perdas e ganhos.
